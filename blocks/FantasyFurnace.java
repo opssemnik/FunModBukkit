@@ -118,27 +118,26 @@ public class FantasyFurnace extends BlockContainer
     /**
      * Called upon block activation (right click on the block.)
      */
+@Override
+public boolean interact(World paramWorld, int paramInt1, int paramInt2, int paramInt3, EntityHuman paramEntityHuman, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3)
+{
+  if (paramWorld.isStatic) {
+    return true;
+  }
+       
+        	TileEntity blockEntity = (TileEntity)paramWorld.getTileEntity(paramInt1, paramInt3, paramInt4);
 
-    public boolean Interact(World par1World, int par2, int par3, int par4, EntityHuman par5EntityPlayer, int par6, float par7, float par8, float par9)
-    {
-        if (par1World.isStatic)
-        {
-            return true;
-        }
-        else
-        {
-        	TileEntity blockEntity = (TileEntity)par1World.getTileEntity(par2, par3, par4);
-
-            if (blockEntity != null){	
+           
         	
-            	EntidadeFantasyFurnace var10 = (EntidadeFantasyFurnace)par1World.getTileEntity(par2, par3, par4);
-    			par5EntityPlayer.openGui(FunMod.instance, 1, par1World, par2, par3, par4);
-    		}
+            	EntidadeFantasyFurnace var10 = (EntidadeFantasyFurnace)paramWorld.getTileEntity(paramInt1, paramInt3,paramInt4);
+    			paramEntityHuman.openGui(FunMod.instance, 1, paramWorld, paramInt1, paramInt3, paramInt4);
+    		
 
             return true;
-        
-    }
-    }
+            }  
+    
+
+    
     /**
      * Update which block ID the furnace is using depending on whether or not it is burning
      */
